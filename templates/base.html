@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Build A Blog</title>
-        <style type="text/css">
+        <style>
             .error {
                 color: red;
             }
@@ -10,13 +10,25 @@
     </head>
 <body>
         <nav>
-            <a href="/blog"> Main Page </a> |
-            <a href="/newpost"> Add new blog </a> 
-            
+            <a href='/index'>All Users</a> |
+            <a href='/blog'> All Blogs </a> |
+            <a href='/newpost'> Add new blog</a> |
+            <a href='/login'>Log In</a> |
+            <a href='/logout'>Log Out</a>
         </nav>
-    <!--Add some navigation links to back to main page and add a blog entry-->
+
+        {% with messages = get_flashed_messages() %}
+            <ul>
+            {% for message in messages %}
+              
+                <li><span class="error">{{ message }}</span></li> 
+             
+            {% endfor %}
+            </ul>
+        {% endwith %}
 
     {% block content %}
+    
     {% endblock %}
 
 </body>
